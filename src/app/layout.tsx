@@ -1,48 +1,50 @@
 import type { Metadata, Viewport } from "next";
-import { JetBrains_Mono, Newsreader } from "next/font/google";
+import { JetBrains_Mono, VT323 } from "next/font/google";
 import { profile } from "@/data/content";
 import "./globals.css";
 
-const serif = Newsreader({
+const mono = JetBrains_Mono({
   subsets: ["latin"],
-  style: ["normal", "italic"],
-  variable: "--font-newsreader",
+  weight: ["400", "500", "700", "800"],
+  variable: "--font-jb",
   display: "swap",
 });
 
-const mono = JetBrains_Mono({
+const vt = VT323({
   subsets: ["latin"],
-  variable: "--font-jetbrains",
+  weight: "400",
+  variable: "--font-vt",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: `${profile.name} — Research Portfolio`,
-  description: `${profile.name}: ${profile.role}. Selected publications, projects and research, presented as a living paper.`,
+  title: `${profile.name} — MUNTASIR_OS`,
+  description: `${profile.name}: ${profile.role}. Research papers rendered as live ASCII, projects, and experience — in a terminal.`,
   openGraph: {
-    title: `${profile.name} — Research Portfolio`,
-    description: "Selected publications, projects and research, presented as a living paper.",
+    title: `${profile.name} — MUNTASIR_OS`,
+    description: "Research papers rendered as live ASCII, projects, and experience — in a terminal.",
     type: "website",
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f5f0e6" },
-    { media: "(prefers-color-scheme: dark)", color: "#12110f" },
-  ],
+  themeColor: "#040805",
+  colorScheme: "dark",
 };
 
-// Apply saved theme before first paint to avoid a flash.
-const themeScript = `try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}`;
+// Restore the saved phosphor colour before first paint.
+const phosphorScript = `try{var p=localStorage.getItem('phosphor');if(p==='amber'||p==='ice'||p==='green')document.documentElement.setAttribute('data-phosphor',p)}catch(e){}`;
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${serif.variable} ${mono.variable}`}>
+    <html lang="en" data-phosphor="green" suppressHydrationWarning className={`${mono.variable} ${vt.variable}`}>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <script dangerouslySetInnerHTML={{ __html: phosphorScript }} />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <div className="crt-overlay" aria-hidden />
+      </body>
     </html>
   );
 }
