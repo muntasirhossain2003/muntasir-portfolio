@@ -63,6 +63,7 @@
 
 /* ── Base ───────────────────────────────────────────────────── */
 html {
+  overflow-x: clip;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
 }
@@ -79,7 +80,7 @@ body {
   font-family: var(--font-serif);
   font-size: 1.0625rem;
   line-height: 1.65;
-  overflow-x: hidden;
+  overflow-x: clip;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   transition: background-color 0.4s ease, color 0.4s ease;

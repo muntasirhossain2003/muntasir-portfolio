@@ -35,7 +35,7 @@ export function References() {
   };
 
   return (
-    <div className="grid gap-12 lg:grid-cols-[1fr_1fr]">
+    <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
       <ol className="space-y-4">
         {refs.map((r, i) => (
           <motion.li
@@ -49,7 +49,7 @@ export function References() {
             <span className="font-mono text-sm text-accent">[{i + 1}]</span>
             <span>
               {profile.citeName}. <em>{r.what}</em>. {r.where},{" "}
-              <a href={r.href} target={r.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" className="break-all font-mono text-sm text-accent-2 hover:text-accent">
+              <a href={r.href} target={r.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" className="font-mono text-sm text-accent-2 [overflow-wrap:anywhere] hover:text-accent">
                 {r.text ?? r.href.replace(/^https?:\/\//, "")}
               </a>
               .

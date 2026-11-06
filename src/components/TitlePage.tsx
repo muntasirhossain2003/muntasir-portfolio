@@ -25,7 +25,7 @@ export function TitlePage() {
   ].filter((l) => l.href);
 
   return (
-    <header id="abstract" className="relative flex min-h-svh flex-col justify-center px-4 pb-24 pt-28 sm:px-6">
+    <header id="abstract" className="relative flex min-h-svh flex-col justify-center px-4 pb-10 pt-28 sm:px-6">
       {/* margin stamp, preprint-server style */}
       <div
         className="pointer-events-none absolute left-3 top-1/2 hidden select-none lg:block xl:left-8"
@@ -74,7 +74,7 @@ export function TitlePage() {
 
         <motion.div className="mx-auto mt-14 max-w-xl text-left" {...fade(nameDone + 0.5)}>
           <p className="smallcaps mb-3 text-center font-semibold">Abstract</p>
-          <InkText text={profile.abstract} delay={reduce ? 0 : nameDone + 0.6} step={0.018} className="hyphenate text-justify text-[1.02rem] leading-relaxed" />
+          <InkText text={profile.abstract} delay={reduce ? 0 : nameDone + 0.6} step={0.018} className="hyphenate text-[1.02rem] leading-relaxed sm:text-justify" />
           <p className="mt-5 text-sm text-ink-soft">
             <span className="font-semibold italic text-ink">Keywords — </span>
             {profile.keywords.join(" · ")}
@@ -84,7 +84,7 @@ export function TitlePage() {
 
       <motion.a
         href="#introduction"
-        className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2 font-mono text-[11px] text-ink-faint no-underline hover:text-accent"
+        className="mx-auto mt-14 flex w-fit flex-col items-center gap-2 font-mono text-[11px] text-ink-faint no-underline hover:text-accent"
         {...fade(nameDone + 1.4)}
       >
         continue to §1

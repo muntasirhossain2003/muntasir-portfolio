@@ -9,14 +9,14 @@ export function Introduction() {
     <div className="grid gap-12 lg:grid-cols-[1fr_17rem] lg:gap-16">
       <div className="max-w-2xl space-y-5 text-[1.08rem] leading-[1.75]">
         {introduction.map((p, i) => (
-          <InkText key={i} text={p} className={`hyphenate text-justify ${i === 0 ? "dropcap" : ""}`} step={0.008} />
+          <InkText key={i} text={p} className={`hyphenate sm:text-justify ${i === 0 ? "dropcap" : ""}`} step={0.008} />
         ))}
       </div>
 
       <motion.aside
         className="self-start border-y-2 border-ink py-4"
-        initial={{ opacity: 0, x: 20 }}
-        whileInView={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "0px 0px -10% 0px" }}
         transition={{ duration: 0.8, ease: [0.2, 0.7, 0.2, 1] }}
       >
