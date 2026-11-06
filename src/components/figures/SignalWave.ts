@@ -1,6 +1,4 @@
-"use client";
-
-import { clamp, easeInOut, label, lerp, useCanvas } from "./useCanvas";
+import { clamp, easeInOut, label, lerp, type Draw } from "./kit";
 
 const COMPONENTS = [
   { f: 1, a: 1, ph: 0, name: "c₁" },
@@ -9,9 +7,7 @@ const COMPONENTS = [
 ];
 
 /** A composite signal separates into learned components, then recombines. */
-export default function SignalWave() {
-  const ref = useCanvas(
-    (ctx, { w, h, t, c }) => {
+export const drawWave: Draw = (ctx, { w, h, t, c }) => {
       const left = Math.max(44, w * 0.12);
       const right = w - w * 0.05;
       const span = right - left;
@@ -103,9 +99,4 @@ export default function SignalWave() {
         ctx.fill();
       });
       ctx.globalAlpha = 1;
-    },
-    3.5,
-  );
-
-  return <canvas ref={ref} className="absolute inset-0 h-full w-full" />;
-}
+};

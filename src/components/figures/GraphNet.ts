@@ -1,6 +1,4 @@
-"use client";
-
-import { clamp, label, rng, useCanvas } from "./useCanvas";
+import { clamp, label, rng, type Draw } from "./kit";
 
 type Node = { x: number; y: number; ph: number };
 
@@ -75,9 +73,7 @@ const { nodes, edges, sources, hops, maxHop } = (() => {
 })();
 
 /** Message passing: a signal spreads hop by hop from a source node. */
-export default function GraphNet() {
-  const ref = useCanvas(
-    (ctx, { w, h, t, c }) => {
+export const drawGraph: Draw = (ctx, { w, h, t, c }) => {
       const cycleLen = maxHop + 3.2;
       const raw = t * 1.05;
       const cycle = Math.floor(raw / cycleLen);
@@ -160,9 +156,4 @@ export default function GraphNet() {
       ctx.globalAlpha = 0.85;
       label(ctx, `hop ${Math.min(maxHop, Math.max(0, Math.floor(wave)))} / ${maxHop}`, w - 10, h - 12, c.inkSoft, "right", 10);
       ctx.globalAlpha = 1;
-    },
-    3.4,
-  );
-
-  return <canvas ref={ref} className="absolute inset-0 h-full w-full" />;
-}
+};

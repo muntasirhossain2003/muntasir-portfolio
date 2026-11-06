@@ -1,14 +1,10 @@
-"use client";
-
-import { easeInOut, hash, label, useCanvas } from "./useCanvas";
+import { easeInOut, hash, label, type Draw } from "./kit";
 
 const LAYERS = [4, 7, 7, 5, 2];
 const NAMES = ["x", "h₁", "h₂", "h₃", "ŷ"];
 
 /** Forward pass through a layered network; each pass lights a different sparse path. */
-export default function NeuralFlow() {
-  const ref = useCanvas(
-    (ctx, { w, h, t, c }) => {
+export const drawNeural: Draw = (ctx, { w, h, t, c }) => {
       const L = LAYERS.length;
       const padX = w * 0.1;
       const padTop = h * 0.12;
@@ -100,9 +96,4 @@ export default function NeuralFlow() {
         label(ctx, NAMES[l], pos(l, 0)[0], h - padBot * 0.45, c.inkSoft, "center", 11);
       }
       ctx.globalAlpha = 1;
-    },
-    2.3,
-  );
-
-  return <canvas ref={ref} className="absolute inset-0 h-full w-full" />;
-}
+};

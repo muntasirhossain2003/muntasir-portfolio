@@ -1,6 +1,4 @@
-"use client";
-
-import { clamp, label, useCanvas } from "./useCanvas";
+import { clamp, label, type Draw } from "./kit";
 
 const g = (x: number, y: number, cx: number, cy: number, s: number) =>
   Math.exp(-((x - cx) ** 2 + (y - cy) ** 2) / (2 * s * s));
@@ -54,9 +52,7 @@ const { lo, hi, paths } = (() => {
 const norm = (v: number) => (v - lo) / (hi - lo);
 
 /** Gradient descent with momentum on a loss surface drawn as a dot field. */
-export default function LossLandscape() {
-  const ref = useCanvas(
-    (ctx, { w, h, t, c }) => {
+export const drawLandscape: Draw = (ctx, { w, h, t, c }) => {
       // dot field
       const step = Math.max(10, w / 44);
       for (let y = step / 2; y < h; y += step) {
@@ -137,9 +133,4 @@ export default function LossLandscape() {
       ctx.fillRect(6, h - 24, 124, 18);
       label(ctx, `step ${String(n).padStart(3, "0")}  L=${f(cur[0], cur[1]).toFixed(3)}`, 12, h - 15, c.inkSoft, "left", 10);
       ctx.globalAlpha = 1;
-    },
-    4.2,
-  );
-
-  return <canvas ref={ref} className="absolute inset-0 h-full w-full" />;
-}
+};
