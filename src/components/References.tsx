@@ -35,7 +35,8 @@ export function References() {
   };
 
   return (
-    <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
+    <div className="sheet relative grid grid-cols-1 gap-12 p-6 sm:p-10 lg:grid-cols-2">
+      <span className="tape -top-3 left-1/2 -translate-x-1/2 rotate-[-3deg]" aria-hidden />
       <ol className="space-y-4">
         {refs.map((r, i) => (
           <motion.li
@@ -65,7 +66,7 @@ export function References() {
             {copied ? "copied ✓" : "copy"}
           </button>
         </div>
-        <pre className="mt-3 overflow-x-auto border border-rule bg-paper-2 p-4 font-mono text-xs leading-relaxed text-ink-soft" suppressHydrationWarning>
+        <pre className="mt-3 overflow-x-auto border border-rule bg-paper-2 p-4 [overflow-wrap:anywhere] whitespace-pre-wrap font-mono text-xs leading-relaxed text-ink-soft" suppressHydrationWarning>
           {bib}
         </pre>
       </motion.div>

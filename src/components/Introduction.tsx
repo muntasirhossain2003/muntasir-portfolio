@@ -14,12 +14,14 @@ export function Introduction() {
       </div>
 
       <motion.aside
-        className="self-start border-y-2 border-ink py-4"
+        className="sheet relative self-start rotate-[1.5deg] px-5 py-5"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "0px 0px -10% 0px" }}
         transition={{ duration: 0.8, ease: [0.2, 0.7, 0.2, 1] }}
       >
+        <span className="tape -top-3 left-6 rotate-[-6deg]" aria-hidden />
+        <span className="tape -bottom-3 right-6 rotate-[4deg]" aria-hidden />
         <p className="smallcaps mb-3 border-b border-ink pb-2 text-sm font-semibold">Notation</p>
         <dl className="space-y-3">
           {skills.map((s, i) => (
