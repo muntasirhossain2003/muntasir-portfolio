@@ -72,7 +72,7 @@ export const profile = {
   links: {
     github: "https://github.com/muntasirhossain2003",
     scholar: "", // e.g. https://scholar.google.com/citations?user=XXXX
-    linkedin: "", // e.g. https://www.linkedin.com/in/xxxx
+    linkedin: "https://www.linkedin.com/in/muntasir-hossain-34a912445/",
     email: "", // e.g. you@example.com
     cv: "", // e.g. /cv.pdf (put the file in /public)
   },
