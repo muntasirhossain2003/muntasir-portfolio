@@ -1,6 +1,6 @@
 # Muntasir Hossain — Living Paper
 
-My research portfolio, laid out like an academic paper. Each publication has a live canvas figure that animates its core idea.
+My research portfolio as a stack of real paper in 3D. The title page turns onto the stack, the pages scatter as you scroll, and each publication is a physical sheet whose animated figure lifts off the page. Scroll turns the page with a curl shader.
 
 ## Run
 
@@ -27,4 +27,6 @@ Put your CV at `public/cv.pdf` and set `links.cv` to `/cv.pdf`.
 
 ## Stack
 
-Next.js 16 · TypeScript · Tailwind CSS v4 · Motion · hand-written canvas renderers.
+Next.js 16 · TypeScript · Tailwind CSS v4 · three.js + react-three-fiber · custom GLSL page-curl shader · Lenis · Motion.
+
+Page textures are typeset at runtime on canvas (`src/three/pages.ts`), so editing `content.ts` updates the 3D pages too.
